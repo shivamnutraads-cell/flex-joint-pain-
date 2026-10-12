@@ -617,7 +617,7 @@ form.addEventListener("submit", async (e)=>{
     if(!response.ok || result.success !== true){
       throw new Error(result.message || "CRM ने order स्वीकार नहीं किया।");
     }
-    showFormMessage("धन्यवाद! आपका order CRM में भेज दिया गया है। Order ID: " + result.orderId, true);
+    showFormMessage("धन्यवाद! आपका ऑर्डर कन्फर्म हो गया है। हमारी टीम जल्द ही आपसे संपर्क करेगी। Order ID: " + result.orderId, true);
     form.reset();
     updateOfferPrice();
   }catch(error){
