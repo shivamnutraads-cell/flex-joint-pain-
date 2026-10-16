@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080808">
+<title>Order Confirmed | FlexComfort</title>
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,"Noto Sans Devanagari",Arial,sans-serif;background:#f5f5f5;color:#171717;min-height:100vh;display:flex;flex-direction:column}
+header{background:#050505;color:#fff;padding:20px 4%;font-size:22px;font-weight:900}
+header span{color:#f11d18}
+main{width:min(620px,92%);margin:48px auto;flex:1}
+.card{background:#fff;border:1px solid #e7e7e7;border-radius:22px;padding:36px 30px;text-align:center;box-shadow:0 15px 45px rgba(0,0,0,.07)}
+.check{width:76px;height:76px;margin:0 auto 20px;border-radius:50%;background:#e7f8ec;color:#16803a;display:grid;place-items:center;font-size:42px;font-weight:900}
+.eyebrow{font-size:12px;letter-spacing:1.5px;font-weight:900;color:#16803a;margin-bottom:8px}
+h1{font-size:clamp(28px,6vw,38px);line-height:1.2;margin-bottom:12px}
+.lead{color:#555;line-height:1.8;font-size:15px}
+.order-details{background:#fafafa;border:1px solid #eee;border-radius:14px;padding:16px;margin:24px 0;text-align:left}
+.detail{display:flex;justify-content:space-between;gap:15px;padding:8px 0;font-size:14px}
+.detail+ .detail{border-top:1px solid #e9e9e9}
+.detail strong{text-align:right;overflow-wrap:anywhere}
+.note{font-size:13px;color:#666;line-height:1.7;margin:15px 0 22px}
+.btn{display:inline-flex;justify-content:center;align-items:center;background:#f11d18;color:#fff;text-decoration:none;font-weight:800;border-radius:999px;padding:14px 24px;min-height:48px}
+footer{text-align:center;padding:20px;color:#777;font-size:12px}
+@media(max-width:480px){main{margin:25px auto}.card{padding:28px 18px}.detail{font-size:13px}}
+</style>
+</head>
+<body>
+<header>✚ FlexComfort</header>
+<main>
+  <section class="card">
+    <div class="check" aria-hidden="true">✓</div>
+    <div class="eyebrow">ORDER RECEIVED</div>
+    <h1>धन्यवाद! आपका ऑर्डर कन्फर्म हो गया है।</h1>
+    <p class="lead">हमारी टीम जल्द ही आपसे संपर्क करेगी। कृपया अपना मोबाइल फोन उपलब्ध रखें।</p>
+    <div class="order-details">
+      <div class="detail"><span>ऑर्डर ID</span><strong id="orderId">प्रोसेस हो गया</strong></div>
+      <div class="detail"><span>पैक</span><strong id="quantity">1 Pack</strong></div>
+      <div class="detail"><span>कुल राशि</span><strong id="total">₹699</strong></div>
+      <div class="detail"><span>पेमेंट</span><strong>Cash on Delivery</strong></div>
+    </div>
+    <p class="note">डिलीवरी और ऑर्डर की पुष्टि के लिए हमारी टीम आपसे संपर्क करेगी। अगर आपने गलती से ऑर्डर किया है, तो टीम को कॉल के दौरान बता सकते हैं।</p>
+    <a class="btn" href="./">होम पेज पर वापस जाएँ</a>
+  </section>
+</main>
+<footer>© 2026 FlexComfort. All Rights Reserved.</footer>
+<script>
+const params = new URLSearchParams(location.search);
+const orderId = params.get("orderId");
+const qty = params.get("quantity") === "2" ? 2 : 1;
+const totalParam = params.get("total");
+document.getElementById("orderId").textContent = orderId || "कन्फर्म";
+document.getElementById("quantity").textContent = qty + (qty === 1 ? " Pack" : " Packs");
+document.getElementById("total").textContent = "₹" + (totalParam === "999" ? "999" : "699");
+</script>
+</body>
+</html>

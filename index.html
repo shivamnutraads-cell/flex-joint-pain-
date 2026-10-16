@@ -31,7 +31,7 @@ src="https://www.facebook.com/tr?id=999861313129575&ev=PageView&noscript=1"
 <meta name="description" content="FlexComfort Joint Pain Relief Cream landing page">
 <title>FlexComfort | Joint Pain Relief Cream</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://script.google.com" crossorigin>\n<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -130,6 +130,14 @@ a{text-decoration:none;color:inherit}
 .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px}
 .trust-item{text-align:center;padding:18px 10px;border-right:1px solid #e8e8e8;font-size:13px;font-weight:800}
 .trust-item:last-child{border:0}.trust-item span{display:block;color:var(--red);font-size:20px;margin-bottom:3px}
+
+/* Media / publication logo strip */
+.press-strip{background:#fff;padding:20px 0 24px;border-bottom:1px solid #eee}
+.press-strip img{width:min(100%,1504px);height:auto;max-height:105px;object-fit:contain;margin:0 auto}
+@media(max-width:600px){
+  .press-strip{padding:14px 0}
+  .press-strip img{width:100%;max-height:68px}
+}
 
 /* COMMON */
 .section{padding:65px 0}
@@ -382,6 +390,12 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
   </div>
 </section>
 
+<section class="press-strip" aria-label="Media logos">
+  <div class="container">
+    <img src="assets/shark-tank-logos.png" alt="Shark Tank, FOX, CBS, BBC, Best, Men's Health, The Week and Radio Times logos" loading="lazy" decoding="async">
+  </div>
+</section>
+
 <section class="section problem" id="problems">
   <div class="container problem-grid">
     <div class="problem-visual reveal"></div>
@@ -529,10 +543,10 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
       <!-- LeadVertex order submission runs through a private Google Apps Script proxy. -->
       <form id="orderForm">
         <div class="form-grid">
-          <div><label>नाम *</label><input name="name" id="name" required placeholder="आपका नाम"></div>
-          <div><label>मोबाइल नंबर *</label><input name="phone" id="phone" required maxlength="10" inputmode="numeric" placeholder="10 digit mobile"></div>
+          <div><label>नाम *</label><input name="name" id="name" required autocomplete="name" placeholder="आपका नाम"></div>
+          <div><label>मोबाइल नंबर *</label><input name="phone" id="phone" type="tel" required maxlength="10" inputmode="numeric" autocomplete="tel-national" placeholder="10 digit mobile"></div>
           <div><label>Quantity</label><select name="quantity" id="quantity"><option value="1">1 Pack - ₹699</option><option value="2">2 Packs - ₹999 (Save ₹399)</option></select></div>
-          <div><label>Pincode</label><input name="pincode" id="pincode" maxlength="6" inputmode="numeric" placeholder="Pincode"></div>
+          <div><label>Pincode</label><input name="pincode" id="pincode" maxlength="6" inputmode="numeric" autocomplete="postal-code" placeholder="Pincode"></div>
           <div class="full"><label>पूरा पता *</label><textarea name="address" id="address" rows="3" required placeholder="House No, Street, Area, City..."></textarea></div>
           <div class="full"><button class="hero-cta submit" id="submitBtn" type="submit">🛒 ₹699 में ऑर्डर करें</button></div>
         </div>
@@ -634,9 +648,13 @@ form.addEventListener("submit", async (e)=>{
     if(!response.ok || result.success !== true){
       throw new Error(result.message || "CRM ने order स्वीकार नहीं किया।");
     }
-    showFormMessage("धन्यवाद! आपका ऑर्डर कन्फर्म हो गया है। हमारी टीम जल्द ही आपसे संपर्क करेगी। Order ID: " + result.orderId, true);
-    form.reset();
-    updateOfferPrice();
+    // CRM confirmed the order; now show the dedicated thank-you page.
+    const thankYouUrl = new URL("thank-you.html", window.location.href);
+    if (result.orderId) thankYouUrl.searchParams.set("orderId", String(result.orderId));
+    thankYouUrl.searchParams.set("quantity", String(qty));
+    thankYouUrl.searchParams.set("total", String(total));
+    window.location.assign(thankYouUrl.toString());
+    return;
   }catch(error){
     console.error("LeadVertex submission failed:", error);
     showFormMessage("Order CRM तक नहीं पहुँच पाया। कृपया दोबारा कोशिश करें या customer support से संपर्क करें।", false);
