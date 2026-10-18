@@ -220,36 +220,20 @@ a{text-decoration:none;color:inherit}
 
 /* REVIEWS */
 .reviews{background:#071014;color:#fff}
-.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .review{
   background:#fff;color:#111;border-radius:18px;padding:20px;
-  box-shadow:0 15px 35px rgba(0,0,0,.18);position:relative
+  box-shadow:0 15px 35px rgba(0,0,0,.18);position:relative;min-width:0
 }
 .review-top{display:flex;align-items:center;gap:11px;margin-bottom:12px}
-.avatar{width:52px;height:52px;border-radius:50%;background:linear-gradient(145deg,#eee,#d8d8d8);color:#222;display:grid;place-items:center;font-weight:900;font-size:18px;flex:none;border:2px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.14)}
+.review-photo,.avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;flex:none;border:2px solid #fff;box-shadow:0 3px 10px rgba(0,0,0,.14)}
+.avatar{background:linear-gradient(145deg,#eee,#d8d8d8);color:#222;place-items:center;font-weight:900;font-size:18px}
 .review-name{font-weight:900;font-size:14px}.stars{color:#f2ad00;font-size:13px;letter-spacing:1px}
 .review-date{font-size:10px;color:#999;margin-top:2px}
 .review p{font-size:12px;color:#555;line-height:1.65}
 .review-tag{display:inline-block;margin-top:12px;padding:5px 9px;border-radius:999px;background:#f3f7f5;color:#26704c;font-size:10px;font-weight:800}
-.review-more{display:none;grid-column:1/-1}
-.review-more.show{display:grid}
-.more-reviews-btn{display:block;margin:28px auto 0;border:2px solid var(--red);background:transparent;color:#fff;border-radius:999px;padding:12px 25px;font-weight:900;cursor:pointer;font:inherit;transition:.2s}
-.more-reviews-btn:hover{background:var(--red);transform:translateY(-2px)}
-.review-note{max-width:720px;margin:8px auto 0;text-align:center;color:#aeb8bb;font-size:11px}
-
-
-
-/* Customer review submission */
-.review-submit-box{max-width:820px;margin:34px auto 0;background:#fff;color:#111;padding:clamp(20px,4vw,34px);border-radius:20px}
-.review-submit-box h3{font-size:24px;margin-bottom:8px}
-.review-form-note{font-size:12px;color:#626262;line-height:1.6;margin:6px 0 18px}
-.review-consent{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5}
-.review-consent input{margin-top:4px;flex:none}
-#reviewImagePreview{max-width:180px;max-height:180px;object-fit:contain;margin-top:12px;border-radius:10px}
-.review-form-msg{display:none;margin-top:14px;padding:12px;border-radius:10px;font-size:13px;line-height:1.5}
-.review-empty{grid-column:1/-1;text-align:center}
-.review-empty p{margin-top:6px}
-
+.reviews-intro{max-width:760px;margin:12px auto 0;color:#c5ced0;font-size:12px;line-height:1.7}
+.review-note{max-width:760px;margin:22px auto 0;text-align:center;color:#aeb8bb;font-size:11px;line-height:1.7}
 /* OFFER */
 .offer{background:#fff}
 .offer-box{
@@ -337,7 +321,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
   .bullets{grid-template-columns:1fr 1fr;gap:15px}
   .hero-product{min-height:320px}
   .hero-product img{height:330px}
-  .trust-grid,.review-grid,.problem-list,.form-grid{grid-template-columns:1fr}
+  .trust-grid,.problem-list,.form-grid{grid-template-columns:1fr}\n  .review-grid{grid-template-columns:1fr}
   .review-more{grid-template-columns:1fr}
   .section{padding:50px 0}
   .problem-visual{min-height:280px;background-size:contain}
@@ -456,10 +440,10 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
       </div>
 
       <div class="ingredients">
-        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-arnica.jpg')"></div><div><strong>सामग्री की जानकारी</strong><small>सिर्फ पैक पर दी गई ingredient list को मानें</small></div></div>
-        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-eucalyptus.jpg')"></div><div><strong>सामग्री की जानकारी</strong><small>सिर्फ पैक पर दी गई ingredient list को मानें</small></div></div>
-        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-clove.jpg')"></div><div><strong>सामग्री की जानकारी</strong><small>सिर्फ पैक पर दी गई ingredient list को मानें</small></div></div>
-        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-camphor.jpg')"></div><div><strong>सामग्री की जानकारी</strong><small>सिर्फ पैक पर दी गई ingredient list को मानें</small></div></div>
+        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-arnica.jpg')"></div><div><strong>Arnica</strong><small>Verified formula information यहाँ डालें</small></div></div>
+        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-eucalyptus.jpg')"></div><div><strong>Eucalyptus</strong><small>Verified formula information यहाँ डालें</small></div></div>
+        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-clove.jpg')"></div><div><strong>Clove</strong><small>Verified formula information यहाँ डालें</small></div></div>
+        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-camphor.jpg')"></div><div><strong>Camphor</strong><small>Verified formula information यहाँ डालें</small></div></div>
       </div>
     </div>
   </div>
@@ -485,29 +469,148 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
 <section class="section reviews" id="reviews">
   <div class="container">
     <div class="section-title">
-      <div class="small">असली ग्राहकों की राय</div>
-      <h2>Customer Reviews</h2>
-      <p>केवल वास्तविक ग्राहक अनुभव यहाँ प्रकाशित किए जाएँगे। अपना अनुभव और चाहें तो product की फोटो साझा करें। Review प्रकाशित होने से पहले जाँचा जाएगा।</p>
-      <div class="review-form-note" style="max-width:760px;margin:0 auto 22px;text-align:center">समीक्षाएँ ग्राहक की अनुमति से प्रकाशित होंगी। अभी कोई सत्यापित review उपलब्ध नहीं है; इसलिए कोई नकली rating या customer count नहीं दिखाया जा रहा।</div>
+      <div class="small">ग्राहक अनुभव</div>
+      <h2>FlexComfort Reviews</h2>
+      <p class="reviews-intro">15 review cards • नीचे दिए गए text उदाहरण हैं—publish करने से पहले इन्हें वास्तविक ग्राहक की अनुमति-प्राप्त प्रतिक्रिया से बदलें।</p>
     </div>
-    <div class="review-grid" id="liveReviewList" aria-live="polite">
-      <div class="review review-empty"><strong>अभी कोई approved customer review प्रकाशित नहीं है।</strong><p>जब वास्तविक ग्राहक अपना अनुभव साझा करेंगे और review जाँचकर approve होगा, तभी वह यहाँ दिखेगा।</p></div>
-    </div>
-    <div class="review-submit-box">
-      <h3>अपना Review लिखें</h3>
-      <p class="review-form-note">कृपया केवल अपने वास्तविक अनुभव के बारे में लिखें। आपकी निजी जानकारी सार्वजनिक review में न लिखें।</p>
-      <form id="customerReviewForm">
-        <div class="form-grid">
-          <div><label for="reviewName">आपका नाम *</label><input id="reviewName" name="name" required maxlength="60" placeholder="नाम"></div>
-          <div><label for="reviewRating">Rating *</label><select id="reviewRating" name="rating" required><option value="5">★★★★★ — 5/5</option><option value="4">★★★★☆ — 4/5</option><option value="3">★★★☆☆ — 3/5</option><option value="2">★★☆☆☆ — 2/5</option><option value="1">★☆☆☆☆ — 1/5</option></select></div>
-          <div class="full"><label for="reviewText">आपका अनुभव *</label><textarea id="reviewText" name="review" rows="4" minlength="10" maxlength="1200" required placeholder="Product के बारे में अपना सच्चा अनुभव लिखें…"></textarea></div>
-          <div class="full"><label for="reviewImage">Product की फोटो (वैकल्पिक)</label><input id="reviewImage" name="image" type="file" accept="image/jpeg,image/png,image/webp"><small class="review-form-note">JPG, PNG या WEBP; अधिकतम 3 MB। कृपया निजी/संवेदनशील फोटो अपलोड न करें।</small><img id="reviewImagePreview" alt="आपकी चुनी हुई फोटो का preview" hidden></div>
-          <div class="full"><label class="review-consent"><input type="checkbox" id="reviewConsent" required> मैं पुष्टि करता/करती हूँ कि यह मेरा वास्तविक अनुभव है और इसे review के रूप में जाँचा जा सकता है।</label></div>
-          <div class="full"><button class="hero-cta submit" id="reviewSubmitBtn" type="submit">Review भेजें</button></div>
+    <div class="review-grid">
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-01.jpg" alt="Review photo 1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">रश</div>
+          <div><div class="review-name">राहुल शर्मा</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 01</div></div>
         </div>
-      </form>
-      <div id="reviewFormMsg" class="review-form-msg" role="status"></div>
+        <p>“Packaging साफ-सुथरी थी और tube इस्तेमाल करना आसान लगा।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-02.jpg" alt="Review photo 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">सव</div>
+          <div><div class="review-name">सीमा वर्मा</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 02</div></div>
+        </div>
+        <p>“Cream का texture अच्छा लगा और लगाने में ज्यादा समय नहीं लगता।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-03.jpg" alt="Review photo 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">मस</div>
+          <div><div class="review-name">मोहन सिंह</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 03</div></div>
+        </div>
+        <p>“Product की packing ठीक थी और इसे घर पर रखना convenient है।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-04.jpg" alt="Review photo 4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">अक</div>
+          <div><div class="review-name">अमित कुमार</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 04</div></div>
+        </div>
+        <p>“Tube से थोड़ी मात्रा निकालना आसान है। Instructions भी साफ लिखे हैं।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-05.jpg" alt="Review photo 5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">पद</div>
+          <div><div class="review-name">पूजा देवी</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 05</div></div>
+        </div>
+        <p>“Delivery के समय product अच्छी तरह packed मिला। इस्तेमाल करना भी आसान है।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-06.jpg" alt="Review photo 6" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">वय</div>
+          <div><div class="review-name">विकास यादव</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 06</div></div>
+        </div>
+        <p>“Cream आसानी से spread हो जाती है और massage करना सरल है।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-07.jpg" alt="Review photo 7" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">नग</div>
+          <div><div class="review-name">नेहा गुप्ता</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 07</div></div>
+        </div>
+        <p>“Product की packaging compact है, इसलिए इसे संभालकर रखना आसान है।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-08.jpg" alt="Review photo 8" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">सच</div>
+          <div><div class="review-name">संजय चौहान</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 08</div></div>
+        </div>
+        <p>“Order की packing अच्छी थी और product वैसा ही मिला जैसा बताया गया था।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-09.jpg" alt="Review photo 9" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">कस</div>
+          <div><div class="review-name">कविता सिंह</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 09</div></div>
+        </div>
+        <p>“इस्तेमाल का तरीका समझना आसान है। Product को routine में रखना सुविधाजनक लगा।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-10.jpg" alt="Review photo 10" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">दम</div>
+          <div><div class="review-name">दीपक मिश्रा</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 10</div></div>
+        </div>
+        <p>“Tube का design practical है और जरूरत के हिसाब से cream निकाल सकते हैं।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-11.jpg" alt="Review photo 11" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">अश</div>
+          <div><div class="review-name">अंजलि शर्मा</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 11</div></div>
+        </div>
+        <p>“Packing neat थी और product के साथ instructions पढ़ने में आसान लगे।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-12.jpg" alt="Review photo 12" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">रक</div>
+          <div><div class="review-name">राजेश कुमार</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 12</div></div>
+        </div>
+        <p>“Order सही हालत में मिला। Cream की consistency मुझे ठीक लगी।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-13.jpg" alt="Review photo 13" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">मद</div>
+          <div><div class="review-name">मनीषा देवी</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 13</div></div>
+        </div>
+        <p>“Product का size घर पर इस्तेमाल के लिए convenient लगा।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-14.jpg" alt="Review photo 14" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">पव</div>
+          <div><div class="review-name">पंकज वर्मा</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 14</div></div>
+        </div>
+        <p>“Package अच्छी तरह बंद था और product को इस्तेमाल करना आसान है।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
+      <article class="review reveal">
+        <div class="review-top">
+          <img class="review-photo" src="assets/customer-review-15.jpg" alt="Review photo 15" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+          <div class="avatar review-fallback" style="display:none">सय</div>
+          <div><div class="review-name">सुनीता यादव</div><div class="stars" aria-label="5 star example rating">★★★★★</div><div class="review-date">Review example 15</div></div>
+        </div>
+        <p>“Overall packaging और application का तरीका simple लगा।”</p>
+        <span class="review-tag">उदाहरण समीक्षा</span>
+      </article>
     </div>
+    <div class="review-note">नोट: ये review text demo examples हैं, verified customer testimonials नहीं। केवल वास्तविक feedback और अनुमति वाली तस्वीरें ही असली customer reviews के रूप में प्रकाशित करें।</div>
   </div>
 </section>
 
@@ -600,70 +703,6 @@ const observer = new IntersectionObserver((entries)=>{
   });
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-
-
-
-/* Customer reviews: public/live reviews require a connected backend endpoint.
-   Set this to a deployed, secured review API that stores submissions and moderates them. */
-const CUSTOMER_REVIEW_API_URL = "";
-const reviewForm = document.getElementById("customerReviewForm");
-const reviewMsg = document.getElementById("reviewFormMsg");
-const reviewImage = document.getElementById("reviewImage");
-const reviewPreview = document.getElementById("reviewImagePreview");
-const reviewSubmitBtn = document.getElementById("reviewSubmitBtn");
-
-function reviewMessage(text, success=false){
-  reviewMsg.style.display = "block";
-  reviewMsg.style.background = success ? "#e8f7ec" : "#fff0ee";
-  reviewMsg.style.color = success ? "#155b2b" : "#8a2018";
-  reviewMsg.textContent = text;
-}
-reviewImage.addEventListener("change",()=>{
-  const file = reviewImage.files && reviewImage.files[0];
-  reviewPreview.hidden = true;
-  reviewPreview.removeAttribute("src");
-  if(!file) return;
-  if(!["image/jpeg","image/png","image/webp"].includes(file.type) || file.size > 3*1024*1024){
-    reviewImage.value = "";
-    reviewMessage("कृपया JPG, PNG या WEBP फोटो चुनें जिसका आकार 3 MB से कम हो।");
-    return;
-  }
-  const reader = new FileReader();
-  reader.onload = () => { reviewPreview.src = reader.result; reviewPreview.hidden = false; };
-  reader.readAsDataURL(file);
-});
-reviewForm.addEventListener("submit", async (e)=>{
-  e.preventDefault();
-  if(!reviewForm.reportValidity()) return;
-  if(!CUSTOMER_REVIEW_API_URL){
-    reviewMessage("Review form तैयार है, लेकिन live review चालू करने के लिए सुरक्षित review database/API जोड़ना बाकी है। अभी review भेजा नहीं गया है।");
-    return;
-  }
-  const file = reviewImage.files && reviewImage.files[0];
-  const payload = new FormData();
-  payload.append("name", document.getElementById("reviewName").value.trim());
-  payload.append("rating", document.getElementById("reviewRating").value);
-  payload.append("review", document.getElementById("reviewText").value.trim());
-  payload.append("consent", document.getElementById("reviewConsent").checked ? "true" : "false");
-  if(file) payload.append("image", file);
-  reviewSubmitBtn.disabled = true;
-  reviewSubmitBtn.textContent = "भेजा जा रहा है…";
-  try{
-    const response = await fetch(CUSTOMER_REVIEW_API_URL,{method:"POST",body:payload});
-    const result = await response.json();
-    if(!response.ok || result.success !== true) throw new Error(result.message || "Review जमा नहीं हो पाया।");
-    reviewForm.reset();
-    reviewPreview.hidden = true;
-    reviewPreview.removeAttribute("src");
-    reviewMessage("धन्यवाद! आपका review जाँच के लिए भेज दिया गया है। स्वीकृत होने के बाद ही वह वेबसाइट पर दिखेगा।",true);
-  }catch(err){
-    reviewMessage("Review भेजने में समस्या आई। कृपया थोड़ी देर बाद फिर कोशिश करें।");
-  }finally{
-    reviewSubmitBtn.disabled = false;
-    reviewSubmitBtn.textContent = "Review भेजें";
-  }
-});
-
 
 /* LeadVertex order submission. Set your deployed Apps Script URL below. */
 const LEADVERTEX_PROXY_URL = "https://script.google.com/macros/s/AKfycbwf22hDAYc3RHQH96yEkoEoq9NSSsq-QPQOr24QWksnz_8a88KhVs5Xx6Qgja9OO4ZqYQ/exec";
