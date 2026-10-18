@@ -221,6 +221,11 @@ a{text-decoration:none;color:inherit}
 /* REVIEWS */
 .reviews{background:#071014;color:#fff}
 .review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.review.is-hidden{display:none}
+.review-actions{display:flex;justify-content:center;margin:26px auto 0}
+.review-view-btn{border:0;border-radius:999px;background:#f11d18;color:#fff;padding:13px 28px;font-weight:900;font-size:14px;cursor:pointer;box-shadow:0 8px 22px rgba(241,29,24,.25);transition:transform .2s,background .2s}
+.review-view-btn:hover{background:#d91410;transform:translateY(-2px)}
+.review-view-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .review{
   background:#fff;color:#111;border-radius:18px;padding:20px;
   box-shadow:0 15px 35px rgba(0,0,0,.18);position:relative;min-width:0
@@ -471,7 +476,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
     <div class="section-title">
       <div class="small">ग्राहक अनुभव</div>
       <h2>FlexComfort Reviews</h2>
-      <p class="reviews-intro">15 review cards • नीचे दिए गए text उदाहरण हैं—publish करने से पहले इन्हें वास्तविक ग्राहक की अनुमति-प्राप्त प्रतिक्रिया से बदलें।</p>
+      <p class="reviews-intro">ग्राहकों के अनुभव पढ़ें। पहले 3 reviews यहाँ दिखेंगे—बाकी सभी reviews देखने के लिए “View All Reviews” पर क्लिक करें। नीचे दिए गए text उदाहरण हैं; इन्हें वास्तविक ग्राहक feedback से बदलें।</p>
     </div>
     <div class="review-grid">
       <article class="review reveal">
@@ -501,7 +506,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Product की packing ठीक थी और इसे घर पर रखना convenient है।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-04.jpg" alt="Review photo 4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">अक</div>
@@ -510,7 +515,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Tube से थोड़ी मात्रा निकालना आसान है। Instructions भी साफ लिखे हैं।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-05.jpg" alt="Review photo 5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">पद</div>
@@ -519,7 +524,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Delivery के समय product अच्छी तरह packed मिला। इस्तेमाल करना भी आसान है।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-06.jpg" alt="Review photo 6" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">वय</div>
@@ -528,7 +533,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Cream आसानी से spread हो जाती है और massage करना सरल है।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-07.jpg" alt="Review photo 7" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">नग</div>
@@ -537,7 +542,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Product की packaging compact है, इसलिए इसे संभालकर रखना आसान है।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-08.jpg" alt="Review photo 8" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">सच</div>
@@ -546,7 +551,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Order की packing अच्छी थी और product वैसा ही मिला जैसा बताया गया था।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-09.jpg" alt="Review photo 9" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">कस</div>
@@ -555,7 +560,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“इस्तेमाल का तरीका समझना आसान है। Product को routine में रखना सुविधाजनक लगा।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-10.jpg" alt="Review photo 10" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">दम</div>
@@ -564,7 +569,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Tube का design practical है और जरूरत के हिसाब से cream निकाल सकते हैं।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-11.jpg" alt="Review photo 11" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">अश</div>
@@ -573,7 +578,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Packing neat थी और product के साथ instructions पढ़ने में आसान लगे।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-12.jpg" alt="Review photo 12" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">रक</div>
@@ -582,7 +587,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Order सही हालत में मिला। Cream की consistency मुझे ठीक लगी।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-13.jpg" alt="Review photo 13" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">मद</div>
@@ -591,7 +596,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Product का size घर पर इस्तेमाल के लिए convenient लगा।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-14.jpg" alt="Review photo 14" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">पव</div>
@@ -600,7 +605,7 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Package अच्छी तरह बंद था और product को इस्तेमाल करना आसान है।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
-      <article class="review reveal">
+      <article class="review reveal is-hidden">
         <div class="review-top">
           <img class="review-photo" src="assets/customer-review-15.jpg" alt="Review photo 15" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
           <div class="avatar review-fallback" style="display:none">सय</div>
@@ -609,6 +614,9 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
         <p>“Overall packaging और application का तरीका simple लगा।”</p>
         <span class="review-tag">उदाहरण समीक्षा</span>
       </article>
+    </div>
+    <div class="review-actions">
+      <button class="review-view-btn" id="viewAllReviews" type="button" aria-expanded="false" aria-controls="reviews">View All Reviews (12 more) ↓</button>
     </div>
     <div class="review-note">नोट: ये review text demo examples हैं, verified customer testimonials नहीं। केवल वास्तविक feedback और अनुमति वाली तस्वीरें ही असली customer reviews के रूप में प्रकाशित करें।</div>
   </div>
@@ -703,6 +711,25 @@ const observer = new IntersectionObserver((entries)=>{
   });
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+/* Static review cards: show first 3, expand/collapse all 15 on demand. */
+const viewAllReviewsBtn = document.getElementById("viewAllReviews");
+const hiddenReviewCards = Array.from(document.querySelectorAll(".review-grid .review.is-hidden"));
+viewAllReviewsBtn?.addEventListener("click", () => {
+  const expanded = viewAllReviewsBtn.getAttribute("aria-expanded") === "true";
+  hiddenReviewCards.forEach(card => {
+    if (expanded) {
+      card.classList.remove("show");
+      card.classList.add("is-hidden");
+    } else {
+      card.classList.remove("is-hidden");
+      requestAnimationFrame(() => card.classList.add("show"));
+    }
+  });
+  viewAllReviewsBtn.setAttribute("aria-expanded", String(!expanded));
+  viewAllReviewsBtn.textContent = expanded ? "View All Reviews (12 more) ↓" : "Show Less Reviews ↑";
+  if (expanded) document.getElementById("reviews").scrollIntoView({behavior:"smooth",block:"start"});
+});
 
 /* LeadVertex order submission. Set your deployed Apps Script URL below. */
 const LEADVERTEX_PROXY_URL = "https://script.google.com/macros/s/AKfycbwf22hDAYc3RHQH96yEkoEoq9NSSsq-QPQOr24QWksnz_8a88KhVs5Xx6Qgja9OO4ZqYQ/exec";
