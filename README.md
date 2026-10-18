@@ -78,3 +78,10 @@ Medical/ingredient/benefit claims केवल verified packaging, manufacturer 
 ## Full image display update
 
 Problem and how-to-use images are rendered as normal images with `height:auto` and `object-fit:contain`, so the complete uploaded image stays visible instead of being cropped by `background-size:cover`. Product PNGs also use contain/auto sizing.
+
+
+## Customer review images
+- वास्तविक, अनुमति-प्राप्त ग्राहक photos के लिए `assets/customer-review-01.jpg` से `assets/customer-review-15.jpg` तक नाम रखें।
+- केवल image upload करने से review स्वतः publish नहीं होगा; संबंधित approved review और image path को `index.html` में जोड़ना होगा।
+- 15 review writing prompts और live-review backend setup के लिए `REVIEW-SETUP-HI.md` देखें।
+- 50K+ customer claim तभी लगाएँ जब सत्यापित records हों; “Certified Customers” बिना वास्तविक certification के न लिखें।

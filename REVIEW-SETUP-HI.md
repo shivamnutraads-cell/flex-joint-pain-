@@ -1,26 +1,48 @@
-# FlexComfort Review Feature — Setup Notes (Hindi)
+# FlexComfort — 15 Review Drafts + Image Upload Guide (Hindi)
 
-## क्या अपडेट हुआ
-- पुराने sample/fake reviews हटाए गए हैं; अब कोई नकली customer review या rating दिखाने के लिए hard-code नहीं है।
-- Review form में नाम, 1–5 rating, वास्तविक अनुभव, वैकल्पिक product photo और consent checkbox है।
-- Photo upload validation: JPG/PNG/WEBP, अधिकतम 3 MB; preview भी दिखता है।
-- Review submission के बाद review को moderation/approval के बाद ही public दिखाने के लिए UI तैयार है।
-- Ingredients के placeholder text को बदलकर pack की verified ingredient list देखने का निर्देश रखा है।
+## जरूरी: इन्हें नकली customer reviews की तरह publish न करें
+नीचे दिए गए 15 text केवल **लेखन के नमूने / prompts** हैं। इन्हें वेबसाइट पर असली ग्राहक की राय बताकर न लगाएँ। हर text को वास्तविक खरीदार के feedback के अनुसार बदलें, ग्राहक की अनुमति लें, और तभी नाम/फोटो के साथ publish करें। Review से medical result या guaranteed relief का दावा न बनाएं।
 
-## जरूरी: Live review चालू करने के लिए backend चाहिए
-यह वेबसाइट static GitHub Pages पर है। केवल HTML/JavaScript से एक ग्राहक का review दूसरे ग्राहकों को सुरक्षित रूप से दिखाना संभव नहीं है। अभी `index.html` में `CUSTOMER_REVIEW_API_URL = ""` खाली है; इसलिए form स्पष्ट संदेश देगा और review भेजने का झूठा दावा नहीं करेगा।
+## 15 review-writing prompts (ग्राहक के असली जवाब से भरें)
+1. **उपयोग का अनुभव:** “मैंने FlexComfort को ______ जगह पर label के निर्देश के अनुसार इस्तेमाल किया। मेरा अनुभव ______ रहा।”
+2. **लगाने का तरीका:** “क्रीम लगाना मेरे लिए ______ रहा। इस्तेमाल के बाद मैंने ______ महसूस किया।”
+3. **Texture:** “क्रीम का texture ______ लगा और इसे लगाना ______ था।”
+4. **खुशबू:** “इसकी खुशबू मेरे हिसाब से ______ है।”
+5. **पैकिंग:** “मुझे product की packing ______ मिली।”
+6. **डिलीवरी:** “मेरा ऑर्डर ______ दिन में पहुँचा। डिलीवरी का अनुभव ______ रहा।”
+7. **ऑर्डर अनुभव:** “ऑर्डर देने की प्रक्रिया ______ रही।”
+8. **ग्राहक सहायता:** “मेरे सवाल पर customer support ने ______ मदद की।”
+9. **मसाज अनुभव:** “हल्की मालिश के दौरान क्रीम का अनुभव ______ रहा।”
+10. **रोज़मर्रा की सुविधा:** “मेरी routine में product इस्तेमाल करना ______ रहा।”
+11. **मात्रा:** “मेरे लिए थोड़ी मात्रा ______ रही; मैंने पैक पर दिए निर्देश follow किए।”
+12. **पैक की जानकारी:** “पैक पर दी गई जानकारी ______ लगी।”
+13. **किसे पसंद आया:** “मुझे product की ______ बात पसंद आई।”
+14. **सुधार का सुझाव:** “मेरे अनुभव में ______ अच्छा था; सुधार के लिए मेरा सुझाव ______ है।”
+15. **कुल अनुभव:** “कुल मिलाकर मेरा खरीदारी/उपयोग अनुभव ______ रहा। मेरी राय ______ है।”
 
-Live करने के लिए:
-1. Supabase/Firebase या सुरक्षित API में reviews table/storage बनाएं।
-2. API में server-side validation, image size/type checks, spam protection/rate limiting और moderation status (`pending`/`approved`) रखें।
-3. केवल approved reviews public read endpoint से लोड हों; कोई भी visitor सीधे review को approved न कर सके।
-4. Image upload के लिए storage bucket/policy configure करें।
-5. `index.html` में `CUSTOMER_REVIEW_API_URL` को उस API endpoint से बदलें। Endpoint का response JSON में `{ "success": true }` लौटाए जब review सुरक्षित रूप से जमा हो जाए।
-6. Live API बन जाने पर approved reviews को `#liveReviewList` में fetch करके render करने वाला read endpoint भी जोड़ना होगा। User input को `textContent` से render करें, `innerHTML` से नहीं।
+## GitHub पर customer photo किस नाम से upload करें?
+हर **वास्तविक ग्राहक की अनुमति वाली** photo को `assets` folder में इस तरह नाम दें:
 
-**महत्वपूर्ण:** इस ZIP में live database/API credentials नहीं थे, इसलिए मैंने सार्वजनिक cross-device review storage का दावा नहीं किया है। इस ZIP को upload करने से review form दिखेगा, लेकिन backend configure होने तक reviews save/publish नहीं होंगे।
+- `customer-review-01.jpg`
+- `customer-review-02.jpg`
+- `customer-review-03.jpg`
+- `customer-review-04.jpg`
+- `customer-review-05.jpg`
+- `customer-review-06.jpg`
+- `customer-review-07.jpg`
+- `customer-review-08.jpg`
+- `customer-review-09.jpg`
+- `customer-review-10.jpg`
+- `customer-review-11.jpg`
+- `customer-review-12.jpg`
+- `customer-review-13.jpg`
+- `customer-review-14.jpg`
+- `customer-review-15.jpg`
 
-## Copy/claims review
-- पुराने sample reviews हटाए गए।
-- Product के exact ingredients/medical claims को pack/manufacturer के verified label से मिलाकर ही publish करें।
-- Landing page के current prices ₹699 (1 pack) और ₹999 (2 packs) को भी checkout/offer से match करके verify करें।
+**ध्यान दें:** सिर्फ GitHub पर image upload करने से वह review card में अपने-आप नहीं दिखेगी। `index.html` में संबंधित image path और approved review content जोड़ना होगा। JPG इस्तेमाल करें; file names में spaces न रखें। ग्राहक की अनुमति के बिना चेहरा, फोन नंबर, पता या कोई निजी जानकारी publish न करें।
+
+## “50K+ Certified Customers” के बारे में
+“Certified Customers” आमतौर पर सही wording नहीं है, जब तक कोई वास्तविक certification scheme न हो। अगर आपके पास 50,000+ customers का सत्यापित order record है, तो “50,000+ customers served” जैसा दावा प्रमाण के साथ इस्तेमाल करें। अगर रिकॉर्ड नहीं है, तो यह दावा न लगाएँ। अभी landing page पर कोई अप्रमाणित 50K+ दावा नहीं जोड़ा गया है।
+
+## Live review system की स्थिति
+GitHub Pages अकेले reviews को सभी visitors के बीच save/share नहीं करता। मौजूदा form में `CUSTOMER_REVIEW_API_URL = ""` है; live storage और public display के लिए secure database/API, image storage और approval workflow configure करना बाकी है। तब तक form submission पर साइट सही संदेश देती है कि backend setup बाकी है; वह झूठा success नहीं दिखाती।

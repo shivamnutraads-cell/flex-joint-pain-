@@ -237,6 +237,19 @@ a{text-decoration:none;color:inherit}
 .more-reviews-btn:hover{background:var(--red);transform:translateY(-2px)}
 .review-note{max-width:720px;margin:8px auto 0;text-align:center;color:#aeb8bb;font-size:11px}
 
+
+
+/* Customer review submission */
+.review-submit-box{max-width:820px;margin:34px auto 0;background:#fff;color:#111;padding:clamp(20px,4vw,34px);border-radius:20px}
+.review-submit-box h3{font-size:24px;margin-bottom:8px}
+.review-form-note{font-size:12px;color:#626262;line-height:1.6;margin:6px 0 18px}
+.review-consent{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5}
+.review-consent input{margin-top:4px;flex:none}
+#reviewImagePreview{max-width:180px;max-height:180px;object-fit:contain;margin-top:12px;border-radius:10px}
+.review-form-msg{display:none;margin-top:14px;padding:12px;border-radius:10px;font-size:13px;line-height:1.5}
+.review-empty{grid-column:1/-1;text-align:center}
+.review-empty p{margin-top:6px}
+
 /* OFFER */
 .offer{background:#fff}
 .offer-box{
@@ -443,10 +456,10 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
       </div>
 
       <div class="ingredients">
-        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-arnica.jpg')"></div><div><strong>Arnica</strong><small>Verified formula information यहाँ डालें</small></div></div>
-        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-eucalyptus.jpg')"></div><div><strong>Eucalyptus</strong><small>Verified formula information यहाँ डालें</small></div></div>
-        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-clove.jpg')"></div><div><strong>Clove</strong><small>Verified formula information यहाँ डालें</small></div></div>
-        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-camphor.jpg')"></div><div><strong>Camphor</strong><small>Verified formula information यहाँ डालें</small></div></div>
+        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-arnica.jpg')"></div><div><strong>सामग्री की जानकारी</strong><small>सिर्फ पैक पर दी गई ingredient list को मानें</small></div></div>
+        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-eucalyptus.jpg')"></div><div><strong>सामग्री की जानकारी</strong><small>सिर्फ पैक पर दी गई ingredient list को मानें</small></div></div>
+        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-clove.jpg')"></div><div><strong>सामग्री की जानकारी</strong><small>सिर्फ पैक पर दी गई ingredient list को मानें</small></div></div>
+        <div class="ingredient reveal"><div class="ingredient-img" style="background-image:url('assets/ingredient-camphor.jpg')"></div><div><strong>सामग्री की जानकारी</strong><small>सिर्फ पैक पर दी गई ingredient list को मानें</small></div></div>
       </div>
     </div>
   </div>
@@ -472,22 +485,28 @@ footer{background:#050505;color:#aaa;padding:25px 0;border-top:1px solid #222}
 <section class="section reviews" id="reviews">
   <div class="container">
     <div class="section-title">
-      <div class="small">ग्राहक अनुभव</div>
+      <div class="small">असली ग्राहकों की राय</div>
       <h2>Customer Reviews</h2>
-      <p></p>
+      <p>केवल वास्तविक ग्राहक अनुभव यहाँ प्रकाशित किए जाएँगे। अपना अनुभव और चाहें तो product की फोटो साझा करें। Review प्रकाशित होने से पहले जाँचा जाएगा।</p>
     </div>
-    <div class="review-grid">
-      <article class="review reveal"><div class="review-top"><div class="avatar">R</div><div><div class="review-name">राहुल शर्मा</div><div class="stars">★★★★★</div><div class="review-date">Sample review</div></div></div><p>“Packaging अच्छी लगी और cream को daily routine में apply करना काफी आसान लगा।”</p><span class="review-tag">✓ Experience shared</span></article>
-      <article class="review reveal"><div class="review-top"><div class="avatar">S</div><div><div class="review-name">सीमा वर्मा</div><div class="stars">★★★★★</div><div class="review-date">Sample review</div></div></div><p>“Texture आसानी से spread हो जाता है। इस्तेमाल करने का तरीका भी simple है।”</p><span class="review-tag">✓ Experience shared</span></article>
-      <article class="review reveal"><div class="review-top"><div class="avatar">M</div><div><div class="review-name">मोहन सिंह</div><div class="stars">★★★★★</div><div class="review-date">Sample review</div></div></div><p>“Product compact है और routine में रखना convenient लगा। Instructions follow करना आसान है।”</p><span class="review-tag">✓ Experience shared</span></article>
-      <div class="review-more" id="moreReviews">
-        <article class="review reveal"><div class="review-top"><div class="avatar">A</div><div><div class="review-name">अमित कुमार</div><div class="stars">★★★★★</div><div class="review-date">Sample review</div></div></div><p>“Application जल्दी हो जाता है और product की packing अच्छी और neat लगी।”</p><span class="review-tag">✓ Experience shared</span></article>
-        <article class="review reveal"><div class="review-top"><div class="avatar">P</div><div><div class="review-name">पूजा सिंह</div><div class="stars">★★★★★</div><div class="review-date">Sample review</div></div></div><p>“Daily self-care routine में शामिल करना आसान लगा। Instructions साफ हैं।”</p><span class="review-tag">✓ Experience shared</span></article>
-        <article class="review reveal"><div class="review-top"><div class="avatar">V</div><div><div class="review-name">विकास यादव</div><div class="stars">★★★★★</div><div class="review-date">Sample review</div></div></div><p>“Tube का format convenient है और छोटी quantity में apply करना आसान रहता है।”</p><span class="review-tag">✓ Experience shared</span></article>
-      </div>
+    <div class="review-grid" id="liveReviewList" aria-live="polite">
+      <div class="review review-empty"><strong>अभी कोई approved customer review प्रकाशित नहीं है।</strong><p>जब वास्तविक ग्राहक अपना अनुभव साझा करेंगे और review जाँचकर approve होगा, तभी वह यहाँ दिखेगा।</p></div>
     </div>
-    <button class="more-reviews-btn" id="moreReviewsBtn" type="button">और Reviews देखें ↓</button>
-    <div class="review-note">* </div>
+    <div class="review-submit-box">
+      <h3>अपना Review लिखें</h3>
+      <p class="review-form-note">कृपया केवल अपने वास्तविक अनुभव के बारे में लिखें। आपकी निजी जानकारी सार्वजनिक review में न लिखें।</p>
+      <form id="customerReviewForm">
+        <div class="form-grid">
+          <div><label for="reviewName">आपका नाम *</label><input id="reviewName" name="name" required maxlength="60" placeholder="नाम"></div>
+          <div><label for="reviewRating">Rating *</label><select id="reviewRating" name="rating" required><option value="5">★★★★★ — 5/5</option><option value="4">★★★★☆ — 4/5</option><option value="3">★★★☆☆ — 3/5</option><option value="2">★★☆☆☆ — 2/5</option><option value="1">★☆☆☆☆ — 1/5</option></select></div>
+          <div class="full"><label for="reviewText">आपका अनुभव *</label><textarea id="reviewText" name="review" rows="4" minlength="10" maxlength="1200" required placeholder="Product के बारे में अपना सच्चा अनुभव लिखें…"></textarea></div>
+          <div class="full"><label for="reviewImage">Product की फोटो (वैकल्पिक)</label><input id="reviewImage" name="image" type="file" accept="image/jpeg,image/png,image/webp"><small class="review-form-note">JPG, PNG या WEBP; अधिकतम 3 MB। कृपया निजी/संवेदनशील फोटो अपलोड न करें।</small><img id="reviewImagePreview" alt="आपकी चुनी हुई फोटो का preview" hidden></div>
+          <div class="full"><label class="review-consent"><input type="checkbox" id="reviewConsent" required> मैं पुष्टि करता/करती हूँ कि यह मेरा वास्तविक अनुभव है और इसे review के रूप में जाँचा जा सकता है।</label></div>
+          <div class="full"><button class="hero-cta submit" id="reviewSubmitBtn" type="submit">Review भेजें</button></div>
+        </div>
+      </form>
+      <div id="reviewFormMsg" class="review-form-msg" role="status"></div>
+    </div>
   </div>
 </section>
 
@@ -581,18 +600,69 @@ const observer = new IntersectionObserver((entries)=>{
 },{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-/* More reviews toggle */
-const moreReviewsBtn = document.getElementById("moreReviewsBtn");
-const moreReviews = document.getElementById("moreReviews");
-moreReviewsBtn.addEventListener("click",()=>{
-  const open = moreReviews.classList.toggle("show");
-  moreReviewsBtn.textContent = open ? "कम Reviews दिखाएँ ↑" : "और Reviews देखें ↓";
-  if(open){
-    moreReviews.querySelectorAll(".reveal").forEach(el=>{
-      el.classList.add("show");
-    });
+
+
+/* Customer reviews: public/live reviews require a connected backend endpoint.
+   Set this to a deployed, secured review API that stores submissions and moderates them. */
+const CUSTOMER_REVIEW_API_URL = "";
+const reviewForm = document.getElementById("customerReviewForm");
+const reviewMsg = document.getElementById("reviewFormMsg");
+const reviewImage = document.getElementById("reviewImage");
+const reviewPreview = document.getElementById("reviewImagePreview");
+const reviewSubmitBtn = document.getElementById("reviewSubmitBtn");
+
+function reviewMessage(text, success=false){
+  reviewMsg.style.display = "block";
+  reviewMsg.style.background = success ? "#e8f7ec" : "#fff0ee";
+  reviewMsg.style.color = success ? "#155b2b" : "#8a2018";
+  reviewMsg.textContent = text;
+}
+reviewImage.addEventListener("change",()=>{
+  const file = reviewImage.files && reviewImage.files[0];
+  reviewPreview.hidden = true;
+  reviewPreview.removeAttribute("src");
+  if(!file) return;
+  if(!["image/jpeg","image/png","image/webp"].includes(file.type) || file.size > 3*1024*1024){
+    reviewImage.value = "";
+    reviewMessage("कृपया JPG, PNG या WEBP फोटो चुनें जिसका आकार 3 MB से कम हो।");
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = () => { reviewPreview.src = reader.result; reviewPreview.hidden = false; };
+  reader.readAsDataURL(file);
+});
+reviewForm.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+  if(!reviewForm.reportValidity()) return;
+  if(!CUSTOMER_REVIEW_API_URL){
+    reviewMessage("Review form तैयार है, लेकिन live review चालू करने के लिए सुरक्षित review database/API जोड़ना बाकी है। अभी review भेजा नहीं गया है।");
+    return;
+  }
+  const file = reviewImage.files && reviewImage.files[0];
+  const payload = new FormData();
+  payload.append("name", document.getElementById("reviewName").value.trim());
+  payload.append("rating", document.getElementById("reviewRating").value);
+  payload.append("review", document.getElementById("reviewText").value.trim());
+  payload.append("consent", document.getElementById("reviewConsent").checked ? "true" : "false");
+  if(file) payload.append("image", file);
+  reviewSubmitBtn.disabled = true;
+  reviewSubmitBtn.textContent = "भेजा जा रहा है…";
+  try{
+    const response = await fetch(CUSTOMER_REVIEW_API_URL,{method:"POST",body:payload});
+    const result = await response.json();
+    if(!response.ok || result.success !== true) throw new Error(result.message || "Review जमा नहीं हो पाया।");
+    reviewForm.reset();
+    reviewPreview.hidden = true;
+    reviewPreview.removeAttribute("src");
+    reviewMessage("धन्यवाद! आपका review जाँच के लिए भेज दिया गया है। स्वीकृत होने के बाद ही वह वेबसाइट पर दिखेगा।",true);
+  }catch(err){
+    reviewMessage("Review भेजने में समस्या आई। कृपया थोड़ी देर बाद फिर कोशिश करें।");
+  }finally{
+    reviewSubmitBtn.disabled = false;
+    reviewSubmitBtn.textContent = "Review भेजें";
   }
 });
+
 
 /* LeadVertex order submission. Set your deployed Apps Script URL below. */
 const LEADVERTEX_PROXY_URL = "https://script.google.com/macros/s/AKfycbwf22hDAYc3RHQH96yEkoEoq9NSSsq-QPQOr24QWksnz_8a88KhVs5Xx6Qgja9OO4ZqYQ/exec";
