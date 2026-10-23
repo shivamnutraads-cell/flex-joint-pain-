@@ -264,6 +264,12 @@ a{text-decoration:none;color:inherit}
 .offer-option{border:2px solid #e2e2e2;border-radius:14px;padding:13px;background:#fff;transition:.2s}
 .offer-option.active{border-color:var(--red);box-shadow:0 8px 20px rgba(241,29,24,.10)}
 .offer-option.best{border-color:#111;background:#fffdfd}
+.offer-option.primary{border:2px solid var(--red);background:#fff8f7;position:relative}
+.order-trust{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 18px;padding:13px;border:1px solid #2b4536;background:#101d16;border-radius:12px;color:#d9f7e4;font-size:11px;text-align:center}
+.order-trust span{display:block;font-size:17px;margin-bottom:4px}
+.order-note{font-size:12px;color:#c8d5cb;text-align:center;margin:12px 0 0;line-height:1.6}
+.field-hint{display:block;color:#aaa;font-size:10px;margin-top:5px}
+@media(max-width:520px){.order-trust{grid-template-columns:1fr;gap:10px}.order-trust div{display:flex;align-items:center;gap:9px;text-align:left}.order-trust span{margin:0}}
 .offer-option-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:7px}
 .offer-option-top strong{font-size:12px}
 .offer-option-top span{font-size:9px;font-weight:900;background:var(--red);color:#fff;border-radius:999px;padding:4px 7px}
@@ -702,15 +708,15 @@ document.querySelectorAll('.reel-frame video').forEach(function(video){
       <div class="offer-ribbon">SPECIAL OFFER</div>
       <h2>आज ही ऑर्डर करें<br>और पाएं FlexComfort!</h2>
       <div class="offer-options">
-        <div class="offer-option active">
-          <div class="offer-option-top"><strong>1 PACK</strong><span>POPULAR</span></div>
-          <div><span class="offer-old">₹999</span> <span class="offer-new">₹699</span></div>
-          <small>1 Pack • Cash on Delivery</small>
-        </div>
-        <div class="offer-option best">
+        <div class="offer-option best primary">
           <div class="offer-option-top"><strong>2 PACKS</strong><span>BEST VALUE</span></div>
           <div><span class="offer-old">₹1,398</span> <span class="offer-new">₹999</span></div>
           <small>Save ₹399 • Cash on Delivery</small>
+        </div>
+        <div class="offer-option active">
+          <div class="offer-option-top"><strong>1 PACK</strong><span>BUDGET OPTION</span></div>
+          <div><span class="offer-old">₹999</span> <span class="offer-new">₹699</span></div>
+          <small>1 Pack • Cash on Delivery</small>
         </div>
       </div>
       <p class="offer-sub">Cash on Delivery / Secure Payment</p>
@@ -744,19 +750,24 @@ document.querySelectorAll('.reel-frame video').forEach(function(video){
     <div class="section-title">
       <div class="small">ORDER NOW</div>
       <h2>अपना order details भरें</h2>
-      <p id="orderOfferText">1 Pack ₹699 • 2 Packs ₹999</p>
+      <p id="orderOfferText">2 Packs ₹999 • Save ₹399</p>
     </div>
 
     <div class="order-box reveal">
       <!-- LeadVertex order submission runs through a private Google Apps Script proxy. -->
+      <div class="order-trust" aria-label="Order information">
+        <div><span>🔒</span><strong>आपकी जानकारी सुरक्षित</strong></div>
+        <div><span>📦</span><strong>सही पते पर डिलीवरी</strong></div>
+        <div><span>💵</span><strong>Cash on Delivery</strong></div>
+      </div>
       <form id="orderForm">
         <div class="form-grid">
-          <div><label>नाम *</label><input name="name" id="name" required autocomplete="name" placeholder="आपका नाम"></div>
-          <div><label>मोबाइल नंबर *</label><input name="phone" id="phone" type="tel" required maxlength="10" inputmode="numeric" autocomplete="tel-national" placeholder="10 digit mobile"></div>
-          <div><label>Quantity</label><select name="quantity" id="quantity"><option value="1">1 Pack - ₹699</option><option value="2">2 Packs - ₹999 (Save ₹399)</option></select></div>
-          <div><label>Pincode</label><input name="pincode" id="pincode" maxlength="6" inputmode="numeric" autocomplete="postal-code" placeholder="Pincode"></div>
-          <div class="full"><label>पूरा पता *</label><textarea name="address" id="address" rows="3" required placeholder="House No, Street, Area, City..."></textarea></div>
-          <div class="full"><button class="hero-cta submit" id="submitBtn" type="submit">🛒 ₹699 में ऑर्डर करें</button></div>
+          <div><label>पूरा नाम *</label><input name="name" id="name" required autocomplete="name" placeholder="अपना पूरा नाम लिखें"></div>
+          <div><label>मोबाइल नंबर *</label><input name="phone" id="phone" type="tel" required maxlength="10" inputmode="numeric" autocomplete="tel-national" placeholder="10 अंकों का मोबाइल नंबर"><small class="field-hint">डिलीवरी अपडेट के लिए सही नंबर भरें</small></div>
+          <div><label>अपना पैक चुनें *</label><select name="quantity" id="quantity"><option value="2" selected>2 Packs - ₹999 (₹399 की बचत)</option><option value="1">1 Pack - ₹699</option></select><small class="field-hint">₹999 वाला 2-pack offer सबसे बेहतर value है</small></div>
+          <div><label>पिन कोड *</label><input name="pincode" id="pincode" required maxlength="6" inputmode="numeric" autocomplete="postal-code" placeholder="6 अंकों का PIN code"><small class="field-hint">आपके क्षेत्र में डिलीवरी जाँचने के लिए</small></div>
+          <div class="full"><label>पूरा डिलीवरी पता *</label><textarea name="address" id="address" rows="3" required autocomplete="street-address" placeholder="मकान नंबर, गली, मोहल्ला, नज़दीकी लैंडमार्क, शहर और राज्य लिखें"></textarea><small class="field-hint">पूरा पता भरें ताकि आपका ऑर्डर सही जगह पहुँच सके</small></div>
+          <div class="full"><button class="hero-cta submit" id="submitBtn" type="submit">🛒 ₹999 में 2 Packs ऑर्डर करें</button><p class="order-note">🔒 आपकी जानकारी केवल ऑर्डर प्रोसेसिंग और डिलीवरी के लिए उपयोग की जाएगी।<br>💵 Cash on Delivery • कृपया सबमिट करने से पहले विवरण जाँच लें।</p></div>
         </div>
       </form>
       <div id="formMsg" class="form-msg"></div>
