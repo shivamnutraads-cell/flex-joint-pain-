@@ -875,7 +875,15 @@ form.addEventListener("submit", async (e)=>{
     }
     // CRM confirmed the order; now show the dedicated thank-you page.
     const thankYouUrl = new URL("thank-you.html", window.location.href);
+    // Keep a stable tracking reference for this successfully accepted order.
+    // Prefer the CRM order ID; fall back to a unique reference for this submission.
+    const trackingId = result.orderId
+      ? String(result.orderId)
+      : (window.crypto && typeof window.crypto.randomUUID === "function"
+          ? window.crypto.randomUUID()
+          : "fc-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 12));
     if (result.orderId) thankYouUrl.searchParams.set("orderId", String(result.orderId));
+    thankYouUrl.searchParams.set("trackingId", trackingId);
     thankYouUrl.searchParams.set("quantity", String(qty));
     thankYouUrl.searchParams.set("total", String(total));
     window.location.assign(thankYouUrl.toString());

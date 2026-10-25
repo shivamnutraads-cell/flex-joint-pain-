@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head>\n<!-- Meta Pixel: Purchase event with valid value and currency parameters -->
+<head>\n<!-- Meta Pixel: PageView plus order-confirmed Purchase event -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -76,25 +76,32 @@ document.getElementById("quantity").textContent = qty + (qty === 1 ? " Pack" : "
 document.getElementById("total").textContent = "₹" + (totalParam === "999" ? "999" : "699");
 </script>
 <script>
-/* Send Purchase only after the order form has successfully submitted and redirected here.
-   Use the actual selected offer total passed by index.html; currency must be ISO 4217 INR. */
+/* Send Purchase only after the order form has been accepted by the order endpoint.
+   Deduplicate by this order's ID/reference, not by price (customers can place more than
+   one order at the same price). */
 (function () {
   try {
     var params = new URLSearchParams(window.location.search);
     var rawTotal = params.get('total');
     var total = Number(rawTotal);
-    // Accept only the prices actually offered by this landing page.
-    if (![699, 999].includes(total)) return;
-    var key = 'flexcomfort_purchase_sent_' + total;
-    if (sessionStorage.getItem(key) === '1') return;
+    var orderRef = params.get('trackingId') || params.get('orderId');
+
+    // Do not fire Purchase on a manually opened thank-you page without an order reference.
+    if (![699, 999].includes(total) || !orderRef) return;
+
+    var key = 'flexcomfort_purchase_sent_' + orderRef;
+    if (window.localStorage.getItem(key) === '1') return;
+
     function sendPurchase() {
       if (typeof window.fbq !== 'function') return;
       window.fbq('track', 'Purchase', {
         value: total,
         currency: 'INR'
       });
-      sessionStorage.setItem(key, '1');
+      // Mark only after the event has been queued successfully.
+      window.localStorage.setItem(key, '1');
     }
+
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', sendPurchase, { once: true });
     } else {
@@ -105,5 +112,6 @@ document.getElementById("total").textContent = "₹" + (totalParam === "999" ? "
   }
 })();
 </script>
-\n</body>
+
+</body>
 </html>
