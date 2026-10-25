@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head>
+<head>\n<!-- Meta Pixel: Purchase event with valid value and currency parameters -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '999861313129575');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=999861313129575&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080808">
@@ -58,5 +75,35 @@ document.getElementById("orderId").textContent = orderId || "कन्फर्�
 document.getElementById("quantity").textContent = qty + (qty === 1 ? " Pack" : " Packs");
 document.getElementById("total").textContent = "₹" + (totalParam === "999" ? "999" : "699");
 </script>
-</body>
+<script>
+/* Send Purchase only after the order form has successfully submitted and redirected here.
+   Use the actual selected offer total passed by index.html; currency must be ISO 4217 INR. */
+(function () {
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var rawTotal = params.get('total');
+    var total = Number(rawTotal);
+    // Accept only the prices actually offered by this landing page.
+    if (![699, 999].includes(total)) return;
+    var key = 'flexcomfort_purchase_sent_' + total;
+    if (sessionStorage.getItem(key) === '1') return;
+    function sendPurchase() {
+      if (typeof window.fbq !== 'function') return;
+      window.fbq('track', 'Purchase', {
+        value: total,
+        currency: 'INR'
+      });
+      sessionStorage.setItem(key, '1');
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', sendPurchase, { once: true });
+    } else {
+      sendPurchase();
+    }
+  } catch (e) {
+    console.warn('Meta Purchase tracking could not run:', e);
+  }
+})();
+</script>
+\n</body>
 </html>
