@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head>\n<!-- Meta Pixel: PageView plus order-confirmed Purchase event -->
+<head>
+<!-- Meta Pixel: PageView plus order-confirmed Purchase event -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -84,7 +85,8 @@ document.getElementById("total").textContent = "₹" + (totalParam === "999" ? "
     var params = new URLSearchParams(window.location.search);
     var rawTotal = params.get('total');
     var total = Number(rawTotal);
-    var orderRef = params.get('trackingId') || params.get('orderId');
+    // Prefer the CRM's stable order ID. The generated trackingId is only a fallback.
+    var orderRef = params.get('orderId') || params.get('trackingId');
 
     // Do not fire Purchase on a manually opened thank-you page without an order reference.
     if (![699, 999].includes(total) || !orderRef) return;
