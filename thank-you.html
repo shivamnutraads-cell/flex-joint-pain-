@@ -77,40 +77,41 @@ document.getElementById("quantity").textContent = qty + (qty === 1 ? " Pack" : "
 document.getElementById("total").textContent = "₹" + (totalParam === "999" ? "999" : "699");
 </script>
 <script>
-/* Send Purchase only after the order form has been accepted by the order endpoint.
-   Deduplicate by this order's ID/reference, not by price (customers can place more than
-   one order at the same price). */
+/* Meta Purchase tracking: fire only on the order-confirmed thank-you page,
+   only for a recognized offer total and an order reference. */
 (function () {
+  var params = new URLSearchParams(window.location.search);
+  var rawTotal = params.get('total');
+  var total = Number(rawTotal);
+  var orderRef = params.get('orderId') || params.get('trackingId');
+
+  // A manually opened thank-you page must not count as a purchase.
+  if ((total !== 699 && total !== 999) || !orderRef) return;
+
+  var storageKey = 'flexcomfort_purchase_sent_' + orderRef;
+  // Storage can be unavailable in some browser modes; tracking should still work.
   try {
-    var params = new URLSearchParams(window.location.search);
-    var rawTotal = params.get('total');
-    var total = Number(rawTotal);
-    // Prefer the CRM's stable order ID. The generated trackingId is only a fallback.
-    var orderRef = params.get('orderId') || params.get('trackingId');
+    if (window.localStorage.getItem(storageKey) === '1') return;
+  } catch (storageReadError) {}
 
-    // Do not fire Purchase on a manually opened thank-you page without an order reference.
-    if (![699, 999].includes(total) || !orderRef) return;
+  function sendPurchase() {
+    if (typeof window.fbq !== 'function') return;
+    // Always send a numeric value and valid ISO 4217 currency code.
+    window.fbq('track', 'Purchase', {
+      value: total,
+      currency: 'INR'
+    }, {
+      eventID: String(orderRef)
+    });
+    try {
+      window.localStorage.setItem(storageKey, '1');
+    } catch (storageWriteError) {}
+  }
 
-    var key = 'flexcomfort_purchase_sent_' + orderRef;
-    if (window.localStorage.getItem(key) === '1') return;
-
-    function sendPurchase() {
-      if (typeof window.fbq !== 'function') return;
-      window.fbq('track', 'Purchase', {
-        value: total,
-        currency: 'INR'
-      });
-      // Mark only after the event has been queued successfully.
-      window.localStorage.setItem(key, '1');
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', sendPurchase, { once: true });
-    } else {
-      sendPurchase();
-    }
-  } catch (e) {
-    console.warn('Meta Purchase tracking could not run:', e);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', sendPurchase, { once: true });
+  } else {
+    sendPurchase();
   }
 })();
 </script>
